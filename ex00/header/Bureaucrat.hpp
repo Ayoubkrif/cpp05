@@ -6,7 +6,7 @@
 /*   By: aykrifa <aykrifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 17:07:00 by aykrifa           #+#    #+#             */
-/*   Updated: 2025/08/30 19:32:55 by aykrifa          ###   ########.fr       */
+/*   Updated: 2025/08/31 15:28:27 by aykrifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,16 @@ class	Bureaucrat
 		std::string const	_name;
 		unsigned int		_grade;
 
-	class	GradeTooHighException	:	public	std::exception
+	class GradeTooHighException : public std::exception
 	{
 		public:
-			virtual const char	*what(void) const throw();
+			virtual const char* what() const throw();
 	};
 
-	class	GradeTooLowException	:	public	std::exception
+	class GradeTooLowException : public std::exception
 	{
 		public:
-			virtual const char	*what(void) const throw();
+			virtual const char* what() const throw();
 	};
 }	;
 
