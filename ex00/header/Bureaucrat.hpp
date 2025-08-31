@@ -6,7 +6,7 @@
 /*   By: aykrifa <aykrifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 17:07:00 by aykrifa           #+#    #+#             */
-/*   Updated: 2025/08/31 15:28:27 by aykrifa          ###   ########.fr       */
+/*   Updated: 2025/08/31 16:13:42 by aykrifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ class	Bureaucrat
 		unsigned int		getGrade(void) const;
 		void				promotion(void);
 		void				demotion(void);
+
 	private:
 		std::string const	_name;
 		unsigned int		_grade;
