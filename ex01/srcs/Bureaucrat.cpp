@@ -6,11 +6,12 @@
 /*   By: aykrifa <aykrifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 19:52:45 by aykrifa           #+#    #+#             */
-/*   Updated: 2025/08/31 17:06:39 by aykrifa          ###   ########.fr       */
+/*   Updated: 2025/09/01 00:04:36 by aykrifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include <exception>
 #include <iomanip>
 
 Bureaucrat::Bureaucrat(void): _name("default"), _grade(150)
@@ -120,9 +121,13 @@ std::ostream			&operator<<(std::ostream &lhs, Bureaucrat const &rhs)
 
 void					Bureaucrat::signForm(Form &f)
 {
-	std::cout << *this
-		<< " is signing "
-		<< f
-		<< std::endl;
-	f.beSigned(*this);
+	try{
+		std::cout << *this
+			<< " is signing "
+			<< f
+			<< std::endl;
+		f.beSigned(*this);
+	}catch (std::exception &e){
+		cannotBecause;
+	}
 }

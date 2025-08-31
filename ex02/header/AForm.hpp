@@ -6,7 +6,7 @@
 /*   By: aykrifa <aykrifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 17:07:00 by aykrifa           #+#    #+#             */
-/*   Updated: 2025/08/31 18:36:37 by aykrifa          ###   ########.fr       */
+/*   Updated: 2025/08/31 23:48:01 by aykrifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ class	AForm
 		void				beSigned(Bureaucrat const &b);
 		virtual void		execute(Bureaucrat const & executor) const = 0;
 
-	private:
+	protected:
 		std::string const	_name;
 		bool				_status;
 		unsigned int		_sgrade;
@@ -50,6 +50,12 @@ class	AForm
 	};
 
 	class AlreadySignedException : public std::exception
+	{
+		public:
+			virtual const char* what() const throw();
+	};
+
+	class NotSignedException : public std::exception
 	{
 		public:
 			virtual const char* what() const throw();

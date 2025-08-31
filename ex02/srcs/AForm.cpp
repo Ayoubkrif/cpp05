@@ -6,7 +6,7 @@
 /*   By: aykrifa <aykrifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 19:52:45 by aykrifa           #+#    #+#             */
-/*   Updated: 2025/08/31 18:17:44 by aykrifa          ###   ########.fr       */
+/*   Updated: 2025/08/31 23:48:35 by aykrifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,11 @@ const char				*AForm::GradeTooLowException::what() const throw()
 const char				*AForm::AlreadySignedException::what() const throw()
 {
 	return ("form is already signed");
+}
+
+const char				*AForm::NotSignedException::what() const throw()
+{
+	return ("form is not signed");
 }
 
 std::ostream &operator<<(std::ostream &lhs, AForm const &rhs)
