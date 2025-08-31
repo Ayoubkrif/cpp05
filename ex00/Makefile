@@ -6,11 +6,11 @@
 #    By: aykrifa <aykrifa@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/14 20:52:04 by aykrifa           #+#    #+#              #
-#    Updated: 2025/08/31 15:13:33 by aykrifa          ###   ########.fr        #
+#    Updated: 2025/08/31 15:32:19 by aykrifa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= RelevantName
+NAME		= Bureaucrat
 CC			= c++
 CFLAGS		= -Wall -Wextra -Werror -std=c++98
 
