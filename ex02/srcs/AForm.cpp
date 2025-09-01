@@ -6,7 +6,7 @@
 /*   By: aykrifa <aykrifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 19:52:45 by aykrifa           #+#    #+#             */
-/*   Updated: 2025/08/31 23:48:35 by aykrifa          ###   ########.fr       */
+/*   Updated: 2025/09/01 12:28:38 by aykrifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,14 +117,14 @@ std::ostream &operator<<(std::ostream &lhs, AForm const &rhs)
 {
     lhs << "AForm " 
         << rhs.getName()
-        << " status: "
-        << std::setw(10) << (rhs.getStatus() ? "signed" : "not signed");
+        << " is"
+        << std::setw(10) << (rhs.getStatus() ? " signed" : " not signed");
     if (!rhs.getStatus())
     {
-        lhs << " grade to sign: "
+        lhs << " to sign: "
             << std::setw(3) << rhs.getSGrade();
     }
-    lhs << " grade to execute: "
+    lhs << " to execute: "
 		<< std::setw(3) << rhs.getXGrade()
 		<< ".";
     return lhs;
@@ -133,26 +133,8 @@ std::ostream &operator<<(std::ostream &lhs, AForm const &rhs)
 void					AForm::beSigned(Bureaucrat const &b)
 {
 	if (b.getGrade() > getSGrade())
-	{
-		std::cout << b.getName()
-			<< " couldn’t sign "
-			<< this->getName()
-			<< " because his grade too low"
-			<< std::endl;
 		throw (GradeTooLowException());
-	}
-	/*if (getStatus())*/
-	/*{*/
-	/*	std::cout << b.getName()*/
-	/*		<< "  couldn’t sign "*/
-	/*		<< this->getName()*/
-	/*		<< " because he is already signed"*/
-	/*		<< std::endl;*/
-	/*	throw (AlreadySignedException());*/
-	/*}*/
+	if (getStatus())
+		throw (AlreadySignedException());
 	this->_status = true;
-	std::cout << b.getName()
-		<< " signed "
-		<< this->getName()
-		<< std::endl;
 }

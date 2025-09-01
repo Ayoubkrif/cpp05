@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*    RobotomyRequestForm.cpp                           :+:      :+:    :+:   */
+/*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aykrifa <aykrifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 19:52:45 by aykrifa           #+#    #+#             */
-/*   Updated: 2025/09/01 00:02:20 by aykrifa          ###   ########.fr       */
+/*   Updated: 2025/09/01 12:39:46 by aykrifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
-#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 #include "Bureaucrat.hpp"
 #include <iomanip>
-#include <ostream>
 
-RobotomyRequestForm::RobotomyRequestForm(void)
-	:	AForm("RobotomyRequestForm", 72, 45), _target("default")
+ShrubberyCreationForm::ShrubberyCreationForm(void)
+	:	AForm("ShrubberyCreationForm", 145, 137), _target("default")
 {
 	std::cout << "[🔧]"
 		<< *this
@@ -25,8 +24,8 @@ RobotomyRequestForm::RobotomyRequestForm(void)
 		<< std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string const target)
-	:	AForm("RobotomyRequestForm", 72, 45),
+ShrubberyCreationForm::ShrubberyCreationForm(std::string const target)
+	:	AForm("ShrubberyCreationForm", 145, 137),
 			_target(target)
 {
 	std::cout << "[🔧]"
@@ -35,7 +34,7 @@ RobotomyRequestForm::RobotomyRequestForm(std::string const target)
 		<< std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &copy)
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &copy)
 	:	AForm(copy._name, copy._sgrade, copy._xgrade),
 			_target(copy._target)
 {
@@ -45,7 +44,7 @@ RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &copy)
 		<< std::endl;
 }
 
-RobotomyRequestForm::~RobotomyRequestForm(void)
+ShrubberyCreationForm::~ShrubberyCreationForm(void)
 {
 	std::cout << "[💥]"
 		<< *this
@@ -53,11 +52,11 @@ RobotomyRequestForm::~RobotomyRequestForm(void)
 		<< std::endl;
 }
 
-RobotomyRequestForm		&RobotomyRequestForm::operator=(RobotomyRequestForm const &rhs)
+ShrubberyCreationForm		&ShrubberyCreationForm::operator=(ShrubberyCreationForm const &rhs)
 {
 	std::cout << "[🟰]"
 		<< *this
-		<< " RobotomyRequests Asignation!"
+		<< " Asignation!"
 		<< std::endl;
 	this->_status = rhs._status;
 	this->_sgrade = rhs._sgrade;
@@ -66,19 +65,25 @@ RobotomyRequestForm		&RobotomyRequestForm::operator=(RobotomyRequestForm const &
     return *this;
 }
 
-void					RobotomyRequestForm::execute(Bureaucrat const &executor) const
+#include <ostream>
+#include <fstream>
+#include <cerrno>
+#include <cstring>
+
+void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
-	if (executor.getGrade() < this->getXGrade())
-		throw (GradeTooLowException());
 	if (!this->getSGrade())
 		throw (NotSignedException());
+	if (executor.getGrade() > this->getXGrade())
+		throw (GradeTooLowException());
 
-	static int counter = 0;
+	std::ofstream Outputfs((_target + "_shrubbery").c_str());
 
-	std::cout << "* BZZZZZZZZZZT *"
-		<< std::endl
-		<<  "Robotomisation on "
-		<< this->_target
-		<< (++counter % 2 ? " succeed !" : " failed !")
-		<< std::endl;
+	if (!Outputfs.is_open())
+		throw (std::runtime_error("Cannot open '" + _target + "_shrubbery': " + std::strerror(errno)));
+
+	Outputfs << "  A       A  " << std::endl;
+	Outputfs << " /v\\     /v\\ " << std::endl;
+	Outputfs << "/vvv\\   /vvv\\" << std::endl;
+	Outputfs << "  !       !  " << std::endl;
 }

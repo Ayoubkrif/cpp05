@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*    PresidentialPardonForm.cpp                        :+:      :+:    :+:   */
+/*    RobotomyRequestForm.cpp                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aykrifa <aykrifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 19:52:45 by aykrifa           #+#    #+#             */
-/*   Updated: 2025/08/31 23:50:53 by aykrifa          ###   ########.fr       */
+/*   Updated: 2025/09/01 10:37:07 by aykrifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
-#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
 #include "Bureaucrat.hpp"
 #include <iomanip>
 #include <ostream>
 
-PresidentialPardonForm::PresidentialPardonForm(void)
-	:	AForm("PresidentialPardonForm", 25, 5), _target("default")
+RobotomyRequestForm::RobotomyRequestForm(void)
+	:	AForm("RobotomyRequestForm", 72, 45), _target("default")
 {
 	std::cout << "[🔧]"
 		<< *this
@@ -25,8 +25,8 @@ PresidentialPardonForm::PresidentialPardonForm(void)
 		<< std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string const target)
-	:	AForm("PresidentialPardonForm", 25, 5),
+RobotomyRequestForm::RobotomyRequestForm(std::string const target)
+	:	AForm("RobotomyRequestForm", 72, 45),
 			_target(target)
 {
 	std::cout << "[🔧]"
@@ -35,7 +35,7 @@ PresidentialPardonForm::PresidentialPardonForm(std::string const target)
 		<< std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &copy)
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &copy)
 	:	AForm(copy._name, copy._sgrade, copy._xgrade),
 			_target(copy._target)
 {
@@ -45,19 +45,19 @@ PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &cop
 		<< std::endl;
 }
 
-PresidentialPardonForm::~PresidentialPardonForm(void)
+RobotomyRequestForm::~RobotomyRequestForm(void)
 {
 	std::cout << "[💥]"
 		<< *this
-		<< " sDestruction!"
+		<< " Destruction!"
 		<< std::endl;
 }
 
-PresidentialPardonForm		&PresidentialPardonForm::operator=(PresidentialPardonForm const &rhs)
+RobotomyRequestForm		&RobotomyRequestForm::operator=(RobotomyRequestForm const &rhs)
 {
 	std::cout << "[🟰]"
 		<< *this
-		<< " Asignation!"
+		<< " RobotomyRequests Asignation!"
 		<< std::endl;
 	this->_status = rhs._status;
 	this->_sgrade = rhs._sgrade;
@@ -66,13 +66,19 @@ PresidentialPardonForm		&PresidentialPardonForm::operator=(PresidentialPardonFor
     return *this;
 }
 
-void					PresidentialPardonForm::execute(Bureaucrat const &executor) const
+void					RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
 	if (executor.getGrade() < this->getXGrade())
 		throw (GradeTooLowException());
 	if (!this->getSGrade())
-		;
-	std::cout << _target
-		<< "has been pardoned by Zaphod Beeblebrox"
+		throw (NotSignedException());
+
+	static int counter = 0;
+
+	std::cout << "* Drilling noises *"
+		<< std::endl
+		<<  "Robotomisation on "
+		<< this->_target
+		<< (++counter % 2 ? " succeed !" : " failed !")
 		<< std::endl;
 }

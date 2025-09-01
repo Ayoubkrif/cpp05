@@ -6,7 +6,7 @@
 /*   By: aykrifa <aykrifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 19:52:45 by aykrifa           #+#    #+#             */
-/*   Updated: 2025/08/31 18:20:08 by aykrifa          ###   ########.fr       */
+/*   Updated: 2025/09/01 12:49:57 by aykrifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,9 +120,42 @@ std::ostream			&operator<<(std::ostream &lhs, Bureaucrat const &rhs)
 
 void					Bureaucrat::signForm(AForm &f)
 {
-	std::cout << *this
-		<< " is signing "
-		<< f
+	try{
+		std::cout << *this
+			<< " is trying to sign "
+			<< f
+			<< std::endl;
+		f.beSigned(*this);
+	std::cout << getName()
+		<< " signed "
+		<< f.getName()
 		<< std::endl;
-	f.beSigned(*this);
+	}catch(std::exception &e){
+		std::cerr << "Cannot sign "
+			<< f
+			<< " because: "
+			<< e.what()
+			<< std::endl;
+	};
+}
+
+void				Bureaucrat::executeForm(AForm const &f) const
+{
+	try{
+		std::cout << *this
+			<< " is trying to execute "
+			<< f
+			<< std::endl;
+		f.execute(*this);
+	std::cout << getName()
+		<< " executed "
+		<< f.getName()
+		<< std::endl;
+	}catch(std::exception &e){
+		std::cerr << "Cannot execute "
+			<< f
+			<< " because: "
+			<< e.what()
+			<< std::endl;
+	};
 }

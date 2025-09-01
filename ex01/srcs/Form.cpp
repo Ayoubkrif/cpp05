@@ -6,7 +6,7 @@
 /*   By: aykrifa <aykrifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 19:52:45 by aykrifa           #+#    #+#             */
-/*   Updated: 2025/08/31 17:21:28 by aykrifa          ###   ########.fr       */
+/*   Updated: 2025/09/01 12:25:52 by aykrifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,26 +128,8 @@ std::ostream &operator<<(std::ostream &lhs, Form const &rhs)
 void					Form::beSigned(Bureaucrat const &b)
 {
 	if (b.getGrade() > getSGrade())
-	{
-		std::cout << b.getName()
-			<< " couldn’t sign "
-			<< this->getName()
-			<< " because his grade too low"
-			<< std::endl;
 		throw (GradeTooLowException());
-	}
-	/*if (getStatus())*/
-	/*{*/
-	/*	std::cout << b.getName()*/
-	/*		<< "  couldn’t sign "*/
-	/*		<< this->getName()*/
-	/*		<< " because he is already signed"*/
-	/*		<< std::endl;*/
-	/*	throw (AlreadySignedException());*/
-	/*}*/
+	if (getStatus())
+		throw (AlreadySignedException());
 	this->_status = true;
-	std::cout << b.getName()
-		<< " signed "
-		<< this->getName()
-		<< std::endl;
 }

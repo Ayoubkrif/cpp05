@@ -6,7 +6,7 @@
 /*   By: aykrifa <aykrifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 19:52:45 by aykrifa           #+#    #+#             */
-/*   Updated: 2025/09/01 00:04:36 by aykrifa          ###   ########.fr       */
+/*   Updated: 2025/09/01 12:26:31 by aykrifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,11 +123,19 @@ void					Bureaucrat::signForm(Form &f)
 {
 	try{
 		std::cout << *this
-			<< " is signing "
+			<< " is trying to sign "
 			<< f
 			<< std::endl;
 		f.beSigned(*this);
-	}catch (std::exception &e){
-		cannotBecause;
-	}
+	std::cout << getName()
+		<< " signed "
+		<< f.getName()
+		<< std::endl;
+	}catch(std::exception &e){
+		std::cerr << "Cannot sign "
+			<< f
+			<< " because: "
+			<< e.what()
+			<< std::endl;
+	};
 }

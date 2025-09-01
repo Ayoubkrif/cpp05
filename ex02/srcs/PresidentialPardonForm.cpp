@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*    ShrubberyCreationForm.cpp                         :+:      :+:    :+:   */
+/*    PresidentialPardonForm.cpp                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aykrifa <aykrifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 19:52:45 by aykrifa           #+#    #+#             */
-/*   Updated: 2025/08/31 23:53:16 by aykrifa          ###   ########.fr       */
+/*   Updated: 2025/09/01 10:52:25 by aykrifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
-#include "ShrubberyCreationForm.hpp"
+#include "PresidentialPardonForm.hpp"
 #include "Bureaucrat.hpp"
 #include <iomanip>
+#include <ostream>
 
-ShrubberyCreationForm::ShrubberyCreationForm(void)
-	:	AForm("ShrubberyCreationForm", 145, 137), _target("default")
+PresidentialPardonForm::PresidentialPardonForm(void)
+	:	AForm("PresidentialPardonForm", 25, 5), _target("default")
 {
 	std::cout << "[🔧]"
 		<< *this
@@ -24,8 +25,8 @@ ShrubberyCreationForm::ShrubberyCreationForm(void)
 		<< std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string const target)
-	:	AForm("ShrubberyCreationForm", 145, 137),
+PresidentialPardonForm::PresidentialPardonForm(std::string const target)
+	:	AForm("PresidentialPardonForm", 25, 5),
 			_target(target)
 {
 	std::cout << "[🔧]"
@@ -34,7 +35,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string const target)
 		<< std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &copy)
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &copy)
 	:	AForm(copy._name, copy._sgrade, copy._xgrade),
 			_target(copy._target)
 {
@@ -44,7 +45,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &copy)
 		<< std::endl;
 }
 
-ShrubberyCreationForm::~ShrubberyCreationForm(void)
+PresidentialPardonForm::~PresidentialPardonForm(void)
 {
 	std::cout << "[💥]"
 		<< *this
@@ -52,38 +53,23 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void)
 		<< std::endl;
 }
 
-ShrubberyCreationForm		&ShrubberyCreationForm::operator=(ShrubberyCreationForm const &rhs)
+PresidentialPardonForm		&PresidentialPardonForm::operator=(PresidentialPardonForm const &rhs)
 {
 	std::cout << "[🟰]"
 		<< *this
 		<< " Asignation!"
 		<< std::endl;
-	this->_status = rhs._status;
-	this->_sgrade = rhs._sgrade;
-	this->_xgrade = rhs._xgrade;
 	this->_target = rhs._target;
     return *this;
 }
 
-#include <ostream>
-#include <fstream>
-#include <cerrno>
-#include <cstring>
-
-void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
+void					PresidentialPardonForm::execute(Bureaucrat const &executor) const
 {
+	if (executor.getGrade() < this->getXGrade())
+		throw (GradeTooLowException());
 	if (!this->getSGrade())
 		throw (NotSignedException());
-	if (executor.getGrade() > this->getXGrade())
-		throw (GradeTooLowException());
-
-	std::ofstream Outputfs((_target + "_shrubbery").c_str());
-
-	if (!Outputfs.is_open())
-		throw (std::runtime_error("Cannot open '" + _target + "_shrubbery': " + std::strerror(errno)));
-
-	Outputfs << "  |       |  " << std::endl;
-	Outputfs << " /-\\     /-\\ " << std::endl;
-	Outputfs << "/---\\   /---\\" << std::endl;
-	Outputfs << "  !       !  " << std::endl;
+	std::cout << _target
+		<< "has been pardoned by Zaphod Beeblebrox"
+		<< std::endl;
 }
