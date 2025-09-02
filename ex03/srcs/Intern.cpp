@@ -6,7 +6,7 @@
 /*   By: aykrifa <aykrifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 19:52:45 by aykrifa           #+#    #+#             */
-/*   Updated: 2025/09/01 14:28:02 by aykrifa          ###   ########.fr       */
+/*   Updated: 2025/09/02 09:19:39 by aykrifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ AForm *Intern::makeForm(std::string name,std::string target)
 		case 0:
 			return (new ShrubberyCreationForm(target));
 		case 1:
-			return (new RobotomyRequestForm(name));
+			return (new RobotomyRequestForm(target));
 		case 2:
 			return (new PresidentialPardonForm (target));
 	}

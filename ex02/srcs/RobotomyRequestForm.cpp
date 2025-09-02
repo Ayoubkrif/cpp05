@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*    RobotomyRequestForm.cpp                           :+:      :+:    :+:   */
+/*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aykrifa <aykrifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 19:52:45 by aykrifa           #+#    #+#             */
-/*   Updated: 2025/09/01 10:37:07 by aykrifa          ###   ########.fr       */
+/*   Updated: 2025/09/02 09:28:27 by aykrifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ RobotomyRequestForm		&RobotomyRequestForm::operator=(RobotomyRequestForm const &
     return *this;
 }
 
+#include <cstdlib>
+
 void					RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
 	if (executor.getGrade() < this->getXGrade())
@@ -73,12 +75,10 @@ void					RobotomyRequestForm::execute(Bureaucrat const &executor) const
 	if (!this->getSGrade())
 		throw (NotSignedException());
 
-	static int counter = 0;
-
 	std::cout << "* Drilling noises *"
 		<< std::endl
 		<<  "Robotomisation on "
 		<< this->_target
-		<< (++counter % 2 ? " succeed !" : " failed !")
+		<< (std::rand() % 2 ? " succeed !" : " failed !")
 		<< std::endl;
 }
