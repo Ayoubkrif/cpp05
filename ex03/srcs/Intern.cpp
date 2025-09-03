@@ -6,7 +6,7 @@
 /*   By: aykrifa <aykrifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 19:52:45 by aykrifa           #+#    #+#             */
-/*   Updated: 2025/09/02 09:19:39 by aykrifa          ###   ########.fr       */
+/*   Updated: 2025/09/02 13:42:08 by aykrifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,26 +55,35 @@ const char				*Intern::DoesNotExistException::what() const throw()
 	return ("form does not exist");
 }
 
+AForm* createShrubbery(std::string const &target) {
+    return new ShrubberyCreationForm(target);
+}
+
+AForm* createPresidential(std::string const &target) {
+    return new PresidentialPardonForm(target);
+}
+
+AForm* createRobotomy(std::string const &target) {
+    return new RobotomyRequestForm(target);
+}
+
 AForm *Intern::makeForm(std::string name,std::string target)
 {
-	int i = 0;
 	static std::string forms[] = {"ShrubberyCreationForm", "RobotomyRequestForm", "PresidentialPardonForm"};
+	static AForm* (*formConstructors[])(std::string const &) =
+	{
+		createShrubbery,
+		createPresidential,
+		createRobotomy
+	};
 
-	while (i < 3 && name != forms[i])
-		i++;
-	
 	std::cout << "Intern try to create "
 		<< name
 		<< std::endl;
-	switch (i)
+	for (int i = 0; i < 3 ; i++)
 	{
-		default:
-			throw (DoesNotExistException());
-		case 0:
-			return (new ShrubberyCreationForm(target));
-		case 1:
-			return (new RobotomyRequestForm(target));
-		case 2:
-			return (new PresidentialPardonForm (target));
+		if (name == forms[i])
+			return (formConstructors[i](target));
 	}
+	throw (DoesNotExistException());
 }
