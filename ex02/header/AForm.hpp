@@ -6,7 +6,7 @@
 /*   By: aykrifa <aykrifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 17:07:00 by aykrifa           #+#    #+#             */
-/*   Updated: 2025/08/31 23:48:01 by aykrifa          ###   ########.fr       */
+/*   Updated: 2025/09/03 11:40:05 by aykrifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ class	AForm
 		unsigned int		getSGrade(void) const;
 		unsigned int		getXGrade(void) const;
 		void				beSigned(Bureaucrat const &b);
-		virtual void		execute(Bureaucrat const & executor) const = 0;
+		void				execute(Bureaucrat const &executor) const;
+		virtual void		action(void) const = 0;
 
 	protected:
 		std::string const	_name;

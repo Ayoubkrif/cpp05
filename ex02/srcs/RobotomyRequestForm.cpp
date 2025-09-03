@@ -6,7 +6,7 @@
 /*   By: aykrifa <aykrifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 19:52:45 by aykrifa           #+#    #+#             */
-/*   Updated: 2025/09/02 09:28:27 by aykrifa          ###   ########.fr       */
+/*   Updated: 2025/09/03 11:43:19 by aykrifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,8 @@ RobotomyRequestForm		&RobotomyRequestForm::operator=(RobotomyRequestForm const &
 
 #include <cstdlib>
 
-void					RobotomyRequestForm::execute(Bureaucrat const &executor) const
+void					RobotomyRequestForm::action(void) const
 {
-	if (executor.getGrade() < this->getXGrade())
-		throw (GradeTooLowException());
-	if (!this->getSGrade())
-		throw (NotSignedException());
-
 	std::cout << "* Drilling noises *"
 		<< std::endl
 		<<  "Robotomisation on "

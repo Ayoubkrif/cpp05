@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*    PresidentialPardonForm.cpp                        :+:      :+:    :+:   */
+/*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aykrifa <aykrifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 19:52:45 by aykrifa           #+#    #+#             */
-/*   Updated: 2025/09/01 10:52:25 by aykrifa          ###   ########.fr       */
+/*   Updated: 2025/09/03 11:44:08 by aykrifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,8 @@ PresidentialPardonForm		&PresidentialPardonForm::operator=(PresidentialPardonFor
     return *this;
 }
 
-void					PresidentialPardonForm::execute(Bureaucrat const &executor) const
+void					PresidentialPardonForm::action(void) const
 {
-	if (executor.getGrade() < this->getXGrade())
-		throw (GradeTooLowException());
-	if (!this->getSGrade())
-		throw (NotSignedException());
 	std::cout << _target
 		<< "has been pardoned by Zaphod Beeblebrox"
 		<< std::endl;

@@ -6,7 +6,7 @@
 /*   By: aykrifa <aykrifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 17:07:00 by aykrifa           #+#    #+#             */
-/*   Updated: 2025/08/31 23:05:19 by aykrifa          ###   ########.fr       */
+/*   Updated: 2025/09/03 11:42:29 by aykrifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class	PresidentialPardonForm	:	public AForm
 		virtual ~PresidentialPardonForm(void);
 
 		PresidentialPardonForm			&operator=(PresidentialPardonForm const &rhs);
-		virtual void					execute(Bureaucrat const &executor) const;
+		virtual void					action(void) const;
 	private:
 		std::string						_target;
 }	;

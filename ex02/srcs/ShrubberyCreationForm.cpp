@@ -6,7 +6,7 @@
 /*   By: aykrifa <aykrifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 19:52:45 by aykrifa           #+#    #+#             */
-/*   Updated: 2025/09/01 12:39:46 by aykrifa          ###   ########.fr       */
+/*   Updated: 2025/09/03 11:42:53 by aykrifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,8 @@ ShrubberyCreationForm		&ShrubberyCreationForm::operator=(ShrubberyCreationForm c
 #include <cerrno>
 #include <cstring>
 
-void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
+void ShrubberyCreationForm::action(void) const
 {
-	if (!this->getSGrade())
-		throw (NotSignedException());
-	if (executor.getGrade() > this->getXGrade())
-		throw (GradeTooLowException());
-
 	std::ofstream Outputfs((_target + "_shrubbery").c_str());
 
 	if (!Outputfs.is_open())
