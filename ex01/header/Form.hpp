@@ -6,7 +6,7 @@
 /*   By: aykrifa <aykrifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 17:07:00 by aykrifa           #+#    #+#             */
-/*   Updated: 2025/08/31 17:19:40 by aykrifa          ###   ########.fr       */
+/*   Updated: 2025/09/03 15:42:09 by aykrifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ class	Form
 	private:
 		std::string const	_name;
 		bool				_status;
-		unsigned int		_sgrade;
-		unsigned int		_xgrade;
+		const unsigned int	_sgrade;
+		const unsigned int	_xgrade;
 
 	class GradeTooHighException : public std::exception
 	{

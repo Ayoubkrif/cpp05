@@ -6,7 +6,7 @@
 /*   By: aykrifa <aykrifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 19:52:45 by aykrifa           #+#    #+#             */
-/*   Updated: 2025/09/03 11:44:08 by aykrifa          ###   ########.fr       */
+/*   Updated: 2025/09/03 15:46:45 by aykrifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ PresidentialPardonForm		&PresidentialPardonForm::operator=(PresidentialPardonFor
 		<< *this
 		<< " Asignation!"
 		<< std::endl;
+	this->_status = rhs._status;
 	this->_target = rhs._target;
     return *this;
 }

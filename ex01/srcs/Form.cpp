@@ -6,7 +6,7 @@
 /*   By: aykrifa <aykrifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 19:52:45 by aykrifa           #+#    #+#             */
-/*   Updated: 2025/09/01 12:25:52 by aykrifa          ###   ########.fr       */
+/*   Updated: 2025/09/03 15:43:05 by aykrifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,6 @@ Form				&Form::operator=(Form const &rhs)
 		<< " Assignation!"
 		<< std::endl;
 	this->_status = rhs._status;
-	this->_sgrade = rhs._sgrade;
-	this->_xgrade = rhs._xgrade;
     return *this;
 }
 

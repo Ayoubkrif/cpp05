@@ -6,7 +6,7 @@
 /*   By: aykrifa <aykrifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 19:52:45 by aykrifa           #+#    #+#             */
-/*   Updated: 2025/09/03 11:43:19 by aykrifa          ###   ########.fr       */
+/*   Updated: 2025/09/03 15:46:24 by aykrifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,6 @@ RobotomyRequestForm		&RobotomyRequestForm::operator=(RobotomyRequestForm const &
 		<< " RobotomyRequests Asignation!"
 		<< std::endl;
 	this->_status = rhs._status;
-	this->_sgrade = rhs._sgrade;
-	this->_xgrade = rhs._xgrade;
 	this->_target = rhs._target;
     return *this;
 }

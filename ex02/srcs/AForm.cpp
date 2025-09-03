@@ -6,7 +6,7 @@
 /*   By: aykrifa <aykrifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 19:52:45 by aykrifa           #+#    #+#             */
-/*   Updated: 2025/09/03 11:45:42 by aykrifa          ###   ########.fr       */
+/*   Updated: 2025/09/03 15:48:10 by aykrifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,6 @@ AForm				&AForm::operator=(AForm const &rhs)
 		<< " Assignation!"
 		<< std::endl;
 	this->_status = rhs._status;
-	this->_sgrade = rhs._sgrade;
-	this->_xgrade = rhs._xgrade;
     return *this;
 }
 
@@ -115,16 +113,15 @@ const char				*AForm::NotSignedException::what() const throw()
 
 std::ostream &operator<<(std::ostream &lhs, AForm const &rhs)
 {
-    lhs << "AForm " 
+    lhs << "AForm: " 
         << rhs.getName()
-        << " is"
         << std::setw(10) << (rhs.getStatus() ? " signed" : " not signed");
     if (!rhs.getStatus())
     {
-        lhs << " to sign: "
+        lhs << " S: "
             << std::setw(3) << rhs.getSGrade();
     }
-    lhs << " to execute: "
+    lhs << " X: "
 		<< std::setw(3) << rhs.getXGrade()
 		<< ".";
     return lhs;
@@ -141,7 +138,7 @@ void					AForm::beSigned(Bureaucrat const &b)
 
 void					AForm::execute(Bureaucrat const &executor) const
 {
-	if (!this->getSGrade())
+	if (!this->getStatus())
 		throw (NotSignedException());
 	if (executor.getGrade() > this->getXGrade())
 		throw (GradeTooLowException());

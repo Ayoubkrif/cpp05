@@ -6,7 +6,7 @@
 /*   By: aykrifa <aykrifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 19:52:45 by aykrifa           #+#    #+#             */
-/*   Updated: 2025/09/03 11:45:42 by aykrifa          ###   ########.fr       */
+/*   Updated: 2025/09/03 15:50:05 by aykrifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,6 @@ AForm				&AForm::operator=(AForm const &rhs)
 		<< " Assignation!"
 		<< std::endl;
 	this->_status = rhs._status;
-	this->_sgrade = rhs._sgrade;
-	this->_xgrade = rhs._xgrade;
     return *this;
 }
 
@@ -141,7 +139,7 @@ void					AForm::beSigned(Bureaucrat const &b)
 
 void					AForm::execute(Bureaucrat const &executor) const
 {
-	if (!this->getSGrade())
+	if (!this->getStatus())
 		throw (NotSignedException());
 	if (executor.getGrade() > this->getXGrade())
 		throw (GradeTooLowException());

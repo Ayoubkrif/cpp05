@@ -6,7 +6,7 @@
 /*   By: aykrifa <aykrifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 19:52:45 by aykrifa           #+#    #+#             */
-/*   Updated: 2025/09/02 13:42:08 by aykrifa          ###   ########.fr       */
+/*   Updated: 2025/09/03 15:49:29 by aykrifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ AForm *Intern::makeForm(std::string name,std::string target)
 	static AForm* (*formConstructors[])(std::string const &) =
 	{
 		createShrubbery,
-		createPresidential,
-		createRobotomy
+		createRobotomy,
+		createPresidential
 	};
 
 	std::cout << "Intern try to create "
