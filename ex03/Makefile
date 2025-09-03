@@ -6,11 +6,11 @@
 #    By: aykrifa <aykrifa@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/14 20:52:04 by aykrifa           #+#    #+#              #
-#    Updated: 2025/09/01 14:20:36 by aykrifa          ###   ########.fr        #
+#    Updated: 2025/09/03 11:51:12 by aykrifa          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= Form
+NAME		= Intern
 CC			= c++
 CFLAGS		= -Wall -Wextra -Werror -std=c++98
 
