@@ -6,13 +6,14 @@
 /*   By: aykrifa <aykrifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 19:52:45 by aykrifa           #+#    #+#             */
-/*   Updated: 2025/09/01 14:24:40 by aykrifa          ###   ########.fr       */
+/*   Updated: 2025/09/03 11:42:53 by aykrifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "Bureaucrat.hpp"
+#include <iomanip>
 
 ShrubberyCreationForm::ShrubberyCreationForm(void)
 	:	AForm("ShrubberyCreationForm", 145, 137), _target("default")
@@ -64,16 +65,13 @@ ShrubberyCreationForm		&ShrubberyCreationForm::operator=(ShrubberyCreationForm c
     return *this;
 }
 
+#include <ostream>
 #include <fstream>
+#include <cerrno>
 #include <cstring>
 
-void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
+void ShrubberyCreationForm::action(void) const
 {
-	if (!this->getSGrade())
-		throw (NotSignedException());
-	if (executor.getGrade() > this->getXGrade())
-		throw (GradeTooLowException());
-
 	std::ofstream Outputfs((_target + "_shrubbery").c_str());
 
 	if (!Outputfs.is_open())

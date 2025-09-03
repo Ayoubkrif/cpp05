@@ -6,14 +6,15 @@
 /*   By: aykrifa <aykrifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 19:52:45 by aykrifa           #+#    #+#             */
-/*   Updated: 2025/09/02 09:17:07 by aykrifa          ###   ########.fr       */
+/*   Updated: 2025/09/03 11:43:19 by aykrifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "Bureaucrat.hpp"
-#include <cstdlib>
+#include <iomanip>
+#include <ostream>
 
 RobotomyRequestForm::RobotomyRequestForm(void)
 	:	AForm("RobotomyRequestForm", 72, 45), _target("default")
@@ -65,13 +66,10 @@ RobotomyRequestForm		&RobotomyRequestForm::operator=(RobotomyRequestForm const &
     return *this;
 }
 
-void					RobotomyRequestForm::execute(Bureaucrat const &executor) const
-{
-	if (executor.getGrade() > this->getXGrade())
-		throw (GradeTooLowException());
-	if (!this->getSGrade())
-		throw (NotSignedException());
+#include <cstdlib>
 
+void					RobotomyRequestForm::action(void) const
+{
 	std::cout << "* Drilling noises *"
 		<< std::endl
 		<<  "Robotomisation on "

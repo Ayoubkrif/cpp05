@@ -6,7 +6,7 @@
 /*   By: aykrifa <aykrifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 19:52:45 by aykrifa           #+#    #+#             */
-/*   Updated: 2025/09/01 12:28:38 by aykrifa          ###   ########.fr       */
+/*   Updated: 2025/09/03 11:45:42 by aykrifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,9 +132,18 @@ std::ostream &operator<<(std::ostream &lhs, AForm const &rhs)
 
 void					AForm::beSigned(Bureaucrat const &b)
 {
-	if (b.getGrade() > getSGrade())
-		throw (GradeTooLowException());
 	if (getStatus())
 		throw (AlreadySignedException());
+	if (b.getGrade() > getSGrade())
+		throw (GradeTooLowException());
 	this->_status = true;
+}
+
+void					AForm::execute(Bureaucrat const &executor) const
+{
+	if (!this->getSGrade())
+		throw (NotSignedException());
+	if (executor.getGrade() > this->getXGrade())
+		throw (GradeTooLowException());
+	action();
 }
