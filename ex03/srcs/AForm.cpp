@@ -6,7 +6,7 @@
 /*   By: aykrifa <aykrifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 19:52:45 by aykrifa           #+#    #+#             */
-/*   Updated: 2025/09/03 15:50:05 by aykrifa          ###   ########.fr       */
+/*   Updated: 2025/09/04 09:34:59 by aykrifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,14 +115,14 @@ std::ostream &operator<<(std::ostream &lhs, AForm const &rhs)
 {
     lhs << "AForm " 
         << rhs.getName()
-        << " is"
-        << std::setw(10) << (rhs.getStatus() ? " signed" : " not signed");
+        << " SIGNED:"
+        << (rhs.getStatus() ? "✅" : "❌");
     if (!rhs.getStatus())
     {
-        lhs << " to sign: "
+        lhs << " S:"
             << std::setw(3) << rhs.getSGrade();
     }
-    lhs << " to execute: "
+    lhs << " X:"
 		<< std::setw(3) << rhs.getXGrade()
 		<< ".";
     return lhs;
@@ -130,9 +130,9 @@ std::ostream &operator<<(std::ostream &lhs, AForm const &rhs)
 
 void					AForm::beSigned(Bureaucrat const &b)
 {
-	if (getStatus())
+	if (this->getStatus())
 		throw (AlreadySignedException());
-	if (b.getGrade() > getSGrade())
+	if (b.getGrade() > this->getSGrade())
 		throw (GradeTooLowException());
 	this->_status = true;
 }

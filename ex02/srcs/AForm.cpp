@@ -6,7 +6,7 @@
 /*   By: aykrifa <aykrifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 19:52:45 by aykrifa           #+#    #+#             */
-/*   Updated: 2025/09/03 15:48:10 by aykrifa          ###   ########.fr       */
+/*   Updated: 2025/09/04 09:24:02 by aykrifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,15 +113,16 @@ const char				*AForm::NotSignedException::what() const throw()
 
 std::ostream &operator<<(std::ostream &lhs, AForm const &rhs)
 {
-    lhs << "AForm: " 
+    lhs << "AForm " 
         << rhs.getName()
-        << std::setw(10) << (rhs.getStatus() ? " signed" : " not signed");
+        << " SIGNED:"
+        << (rhs.getStatus() ? "✅" : "❌");
     if (!rhs.getStatus())
     {
-        lhs << " S: "
+        lhs << " S:"
             << std::setw(3) << rhs.getSGrade();
     }
-    lhs << " X: "
+    lhs << " X:"
 		<< std::setw(3) << rhs.getXGrade()
 		<< ".";
     return lhs;
